@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Intro component with sign up form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins";
+        transition: all 0.35s;
+      }
+      body {
+        background-image: url(./images/bg-intro-desktop.png);
+        background-repeat: no-repeat;
+        font-size: 16px;
+        background-size: cover;
+        background-color: hsl(0, 100%, 74%);
+      }
+      .white {
+        color: white;
+      }
+      h1 {
+        font-size: 50px;
+        line-height: 55px;
+      }
+      .head,
+      .para {
+        margin: 20px 0;
+      }
+      .container {
+        display: flex;
+        transform: translateY(-50%, -50%);
+        justify-content: center;
+        padding: 2rem;
+        align-items: center;
+      }
+      .column-2,
+      .column-1 {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 20px;
+      }
+      .column-2 {
+        width: 600px;
+      }
+      input {
+        width: 100%;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 10px 0;
+        outline: none;
+        border: 1px solid lightgray;
+      }
+      .form {
+        background-color: white;
+        padding: 20px 30px;
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 3px 4px 3px 4px hsl(0, 62%, 57%);
+      }
+      #error1,
+      #error2,
+      #error3,
+      #error4 {
+        text-align: right;
+        font-size: 13px;
+        color: red;
+      }
+      .red {
+        color: red;
+      }
+      .free-trial {
+        background-color: #5d54a3;
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .term {
+        margin: 15px 0;
+        text-align: center;
+      }
+      button {
+        width: 100%;
+        box-shadow: 1px 2px 1px 2px #4bd396;
+        margin: 10px 0;
+        cursor: pointer;
+        background-color: #37cc8a;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+      }
+      button:hover {
+        background-color: #77e2b4;
+      }
+      .input-container {
+        position: relative;
+      }
+
+      .error-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        display: none;
+      }
+
+      input.invalid {
+        border-color: red;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      input.invalid ~ .error-icon {
+        display: block;
+      }
+      @media (max-width: 800px) {
+        body {
+          background-image: url(./images/bg-intro-mobile.png);
+        }
+        .container {
+          flex-direction: column;
+          padding: 0;
+          margin: 20px;
+        }
+        .column-1,
+        .column-2 {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="column-1">
+        <h1 class="white head">Learn to code by watching others</h1>
+        <p class="white para">
+          See how experienced developers solve problems in real-time. Watching
+          scripted tutorials is great, but understanding how developers think is
+          invaluable.
+        </p>
+      </div>
+      <div class="column-2">
+        <div class="free-trial">
+          <p class="white"><b>Try it free 7 days</b> then $20/mo. thereafter</p>
+        </div>
+        <div class="form">
+          <div class="input-container">
+            <input type="text" id="firstName" placeholder="First Name" />
+            <img src="./images/icon-error.svg" alt="error" class="error-icon" />
+          </div>
+          <p id="error1"></p>
+
+          <div class="input-container">
+            <input type="text" id="lastName" placeholder="Last Name" />
+            <img src="./images/icon-error.svg" alt="error" class="error-icon" />
+          </div>
+          <p id="error2"></p>
+
+          <div class="input-container">
+            <input type="email" id="emailAddress" placeholder="Email Address" />
+            <img src="./images/icon-error.svg" alt="error" class="error-icon" />
+          </div>
+          <p id="error3"></p>
+
+          <div class="input-container">
+            <input type="password" id="password" placeholder="Password" />
+            <img src="./images/icon-error.svg" alt="error" class="error-icon" />
+          </div>
+          <p id="error4"></p>
+
+          <p id="succes"></p>
+          <button id="btn">CLAIM YOUR FREE TRIAL</button>
+          <p class="term">
+            By clicking the button, you are agreeing to our
+            <span class="red">Terms and Services</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      const firstName = document.querySelector("#firstName");
+      const lastName = document.querySelector("#lastName");
+      const emailAddress = document.querySelector("#emailAddress");
+      const password = document.querySelector("#password");
+
+      const input = document.querySelector("input");
+      const succes = document.querySelector("#succes");
+
+      const error1 = document.querySelector("#error1");
+      const error2 = document.querySelector("#error2");
+      const error3 = document.querySelector("#error3");
+      const error4 = document.querySelector("#error4");
+
+      const btn = document.querySelector("#btn");
+      const regexPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      btn.addEventListener("click", () => {
+        if (firstName.value === "") {
+          error1.textContent = "First Name cannot be empty";
+          firstName.classList.add("invalid");
+        } else {
+          firstName.classList.remove("invalid");
+        }
+        if (lastName.value === "") {
+          error2.textContent = "Last Name cannot be empty";
+          lastName.classList.add("invalid");
+        } else {
+          lastName.classList.remove("invalid");
+        }
+        if (emailAddress.value === "") {
+          error3.textContent = "Email Address cannot be empty";
+          emailAddress.value = "email@example/com";
+          emailAddress.style.color = "red";
+          emailAddress.classList.add("invalid");
+        } else if (!regexPattern.test(emailAddress.value)) {
+          error3.textContent = "Looks like this is not an email";
+          emailAddress.classList.add("invalid");
+        } else {
+          emailAddress.classList.remove("invalid");
+        }
+        if (password.value === "") {
+          error4.textContent = "Password cannot be empty";
+          password.classList.add("invalid");
+        } else {
+          password.classList.remove("invalid");
+        }
+
+        if (
+          firstName.value !== "" &&
+          lastName.value !== "" &&
+          emailAddress.value !== "" &&
+          password.value !== ""
+        ) {
+          succes.textContent = "You claimed your free trial!";
+          succes.style.color = "green";
+        }
+      });
+
+      input.addEventListener("input", () => {
+        error1.textContent = "";
+        error2.textContent = "";
+        error3.textContent = "";
+        error4.textContent = "";
+
+        emailAddress.value = "";
+        emailAddress.style.color = "black";
+
+        firstName.classList.remove("invalid");
+        lastName.classList.remove("invalid");
+        emailAddress.classList.remove("invalid");
+        password.classList.remove("invalid");
+      });
+    </script>
+  </body>
+</html>
